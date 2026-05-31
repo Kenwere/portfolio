@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Zachariah Ongera | 3D Artist Portfolio</title>
+  <meta name="description" content="Portfolio of Zachariah Ongera, professional 3D artist with 6 years of experience. High-quality 3D models, environments, characters, and product visualizations.">
+  <meta name="theme-color" content="#0F0F0F">
+  <!-- Google Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0F0F0F;
+      font-family: 'Inter', sans-serif;
+      color: #FFFFFF;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #171717;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3B82F6;
+      border-radius: 10px;
+    }
+
+    /* Premium Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0F0F0F;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-circle {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #2a2a2a;
+      border-top: 4px solid #3B82F6;
+      border-radius: 50%;
+      animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 15, 15, 0.85);
+      backdrop-filter: blur(14px);
+      z-index: 100;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(59,130,246,0.2);
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFFFFF, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #E0E0E0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #3B82F6;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-back-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(59,130,246,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+    .hero-badge {
+      color: #3B82F6;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero .highlight {
+      color: #3B82F6;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #B3B3B3;
+      margin-bottom: 32px;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #3B82F6;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px rgba(59,130,246,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: #3B82F6;
+      background: rgba(59,130,246,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 48px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #FFFFFF, #B3B3B3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Masonry Gallery - pure images, no text overlay, no filters */
+    .masonry {
+      column-count: 4;
+      column-gap: 24px;
+      margin: 40px 0;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      cursor: pointer;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.6);
+    }
+    .gallery-img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      transition: transform 0.5s ease;
+      background: #1a1a1a;
+    }
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.02);
+    }
+
+    /* Fullscreen Image Viewer Modal - only image */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.96);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px black;
+      object-fit: contain;
+    }
+
+    /* About + Skills */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-img {
+      flex: 0.8;
+      border-radius: 30px;
+      background: #1e1e1e;
+      padding: 8px;
+      text-align: center;
+    }
+    .portrait-placeholder {
+      background: linear-gradient(145deg, #232323, #141414);
+      width: 100%;
+      aspect-ratio: 1 / 1.2;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #3B82F6;
+    }
+    .skills-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 35px 0;
+    }
+    .skill-card {
+      background: #1f1f1f;
+      padding: 12px 24px;
+      border-radius: 60px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .skill-card:hover {
+      background: #3B82F6;
+      transform: translateY(-4px);
+    }
+
+    /* Contact Section - Simple Email Display Only */
+    .contact-simple {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #171717;
+      border-radius: 40px;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .contact-email-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: #0F0F0F;
+      padding: 18px 36px;
+      border-radius: 80px;
+      border: 1px solid rgba(59,130,246,0.3);
+      transition: all 0.3s ease;
+    }
+    .contact-email-box:hover {
+      border-color: #3B82F6;
+      transform: scale(1.02);
+      box-shadow: 0 10px 25px -8px rgba(59,130,246,0.3);
+    }
+    .contact-email-box i {
+      font-size: 2rem;
+      color: #3B82F6;
+    }
+    .contact-email-box a {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: white;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
+    .contact-email-box a:hover {
+      color: #3B82F6;
+    }
+    .contact-note {
+      margin-top: 28px;
+      color: #B3B3B3;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 20px 32px;
+      border-top: 1px solid #1f1f1f;
+      margin-top: 60px;
+    }
+    .social-icons a {
+      color: #ccc;
+      margin: 0 12px;
+      font-size: 1.4rem;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .social-icons a:hover {
+      color: #3B82F6;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1200px) {
+      .masonry { column-count: 3; }
+    }
+    @media (max-width: 768px) {
+      .masonry { column-count: 2; }
+      .hero h1 { font-size: 2.8rem; }
+      .container { padding: 0 20px; }
+      .nav-inner { flex-direction: column; gap: 12px; }
+      .contact-email-box { padding: 14px 24px; }
+      .contact-email-box a { font-size: 1.2rem; }
+      .contact-email-box i { font-size: 1.6rem; }
+    }
+    @media (max-width: 500px) {
+      .masonry { column-count: 1; }
+      .hero h1 { font-size: 2rem; }
+      .contact-simple { padding: 40px 20px; }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+<div class="loader" id="loader">
+  <div class="loader-circle"></div>
+</div>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">ZACHARIAH ONGERA</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#featured">Work</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero container">
+    <div class="hero-back-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-cube"></i> 3D ARTIST // 6+ YEARS</div>
+      <h1>Zachariah <span class="highlight">Ongera</span><br>Professional 3D Artist</h1>
+      <p>Creating high-quality 3D models, environments, characters, product visualizations, and digital experiences with a focus on realism, creativity, and attention to detail.</p>
+      <div class="btn-group">
+        <a href="#featured" class="btn-primary">View Portfolio</a>
+        <a href="#contact" class="btn-outline">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section (Pure Images) -->
+  <section id="featured" class="container" style="margin-top: 40px;">
+    <h2 class="section-title fade-up">Featured Work</h2>
+    <div class="masonry" id="featuredMasonry"></div>
+  </section>
+
+  <!-- Full Portfolio Gallery - No Filter Buttons, All Images Displayed -->
+  <section id="portfolio" class="container" style="margin-top: 80px;">
+    <h2 class="section-title fade-up">Full Portfolio</h2>
+    <div class="masonry" id="galleryMasonry"></div>
+  </section>
+
+  <!-- About & Skills -->
+  <section id="about" class="container" style="margin-top: 80px;">
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">About me</h2>
+        <p style="color:#B3B3B3; line-height:1.6">Hello, I'm Zachariah Ongera, a professional 3D Artist with over 6 years of experience creating digital assets, environments, characters, and visual experiences. My work combines technical precision with artistic creativity to deliver high-quality results for clients, studios, and personal projects.</p>
+        <div class="skills-cards" id="skillsList"></div>
+      </div>
+      <div class="about-img">
+        <div class="portrait-placeholder">
+          <i class="fas fa-user-astronaut" style="font-size: 5rem;"></i>
+        </div>
+      </div>
+    </div>
+    <div style="margin: 40px 0;">
+      <h3>Software proficiency</h3>
+      <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:20px;">
+        <div style="flex:1;"><span>Blender</span><div style="background:#2a2a2a; border-radius:20px; margin-top:5px;"><div style="width:95%; background:#3B82F6; height:8px; border-radius:20px;"></div></div></div>
+        <div style="flex:1;"><span>ZBrush</span><div style="background:#2a2a2a; border-radius:20px; margin-top:5px;"><div style="width:90%; background:#3B82F6; height:8px; border-radius:20px;"></div></div></div>
+        <div style="flex:1;"><span>Substance Painter</span><div style="background:#2a2a2a; border-radius:20px; margin-top:5px;"><div style="width:88%; background:#3B82F6; height:8px; border-radius:20px;"></div></div></div>
+        <div style="flex:1;"><span>Unreal Engine</span><div style="background:#2a2a2a; border-radius:20px; margin-top:5px;"><div style="width:85%; background:#3B82F6; height:8px; border-radius:20px;"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section - Only Email Display -->
+  <section id="contact" class="container" style="margin-top: 80px;">
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="contact-simple fade-up">
+      <div class="contact-email-box">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:moonwavestudios467@gmail.com">moonwavestudios467@gmail.com</a>
+      </div>
+      <p class="contact-note">Feel free to reach out for collaborations, inquiries, or project discussions.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-artstation"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-behance"></i></a>
+    </div>
+    <p style="margin-top: 24px;">© 2026 Zachariah Ongera. All Rights Reserved.</p>
+  </footer>
+</main>
+
+<!-- Only Fullscreen Image Modal - No description, no filters, no detail panel -->
+<div id="imageModal" class="modal">
+  <img id="modalImg" src="" alt="fullscreen render">
+</div>
+
+<script>
+  // -------------------------------
+  // IMAGE CONFIGURATION
+  // Using images from "images" folder: 1.png to 28.png
+  // No filters, no descriptions, no detail modals. Pure image gallery.
+  // -------------------------------
+  const totalImages = 28;
+  
+  // Generate image paths from 1.png to 28.png
+  const allImages = [];
+  for (let i = 1; i <= totalImages; i++) {
+    allImages.push({
+      id: i,
+      src: `images/${i}.png`
+    });
+  }
+
+  // Build Masonry Gallery - pure images, click opens fullscreen only
+  function buildMasonry(containerId, items) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+    items.forEach(image => {
+      const itemDiv = document.createElement("div");
+      itemDiv.className = "gallery-item";
+      itemDiv.innerHTML = `<img class="gallery-img" src="${image.src}" alt="3D artwork ${image.id}" loading="lazy">`;
+      // Click handler: open fullscreen image only
+      itemDiv.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const modalImg = document.getElementById("modalImg");
+        modalImg.src = image.src;
+        document.getElementById("imageModal").classList.add("active");
+      });
+      container.appendChild(itemDiv);
+    });
+  }
+
+  // Fullscreen image viewer close on click
+  document.getElementById("imageModal").addEventListener("click", () => {
+    document.getElementById("imageModal").classList.remove("active");
+  });
+
+  // Escape key to close fullscreen
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      document.getElementById("imageModal").classList.remove("active");
+    }
+  });
+
+  // Initialize galleries on load
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      document.getElementById("loader").classList.add("hide");
+    }, 500);
+    
+    // Show first 8 images in Featured section
+    const featuredItems = allImages.slice(0, 8);
+    buildMasonry("featuredMasonry", featuredItems);
+    
+    // Full portfolio gallery - all 28 images, no filters
+    buildMasonry("galleryMasonry", allImages);
+    
+    // Skills list population
+    const skillList = ["3D Modeling","Sculpting","Texturing","Retopology","UV Mapping","Lighting","Rendering","Product Visualization","Environment Design","Character Design","Animation","Game Asset Creation"];
+    document.getElementById("skillsList").innerHTML = skillList.map(s => `<div class="skill-card">${s}</div>`).join("");
+    
+    // Scroll animations
+    const faders = document.querySelectorAll(".fade-up");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+    }, { threshold: 0.2 });
+    faders.forEach(el => observer.observe(el));
+  });
+</script>
+</body>
+</html>
